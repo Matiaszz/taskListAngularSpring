@@ -1,4 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+// 🎨 Variáveis
+$primary-color: #6a1b9a;
+$text-color-light: #f5f5f5;
+$text-color-dark: #2c2c2c;
+$background-color-dark: #121212;
+$background-color-light: #ffffff;
+$card-background-dark: #1e1e1e;
+$card-background-light: #f9f9f9;
+$border-color-dark: #444;
+$border-color-light: #ccc;
+$input-background-dark: #333;
+$input-background-light: #f5f5f5;
+$hover-color: #7b40a3;
+$transition-speed: 0.3s ease;
+
+
 * {
     margin: 0;
     padding: 0;
@@ -7,9 +22,46 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: background-color $transition-speed, color $transition-speed;
+
+    background-color: $background-color-dark;
+    color: $text-color-light;
+}
+
+
 section {
-    color: white;
-    background-color: black;
     width: 100dvw;
     height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color $transition-speed, color $transition-speed;
+
+
+    background-color: $background-color-dark;
+    color: $text-color-light;
+}
+
+// 🔘 Botões
+button {
+    background-color: transparent;
+    border: 1px solid $border-color-light;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    color: inherit;
+    transition: background-color $transition-speed;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $hover-color;
+        color: $text-color-light;
+    }
+
 }
