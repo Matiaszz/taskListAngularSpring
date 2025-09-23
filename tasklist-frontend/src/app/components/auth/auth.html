@@ -1,0 +1,14 @@
+<section class="auth-container">
+    <div class="modal">
+
+        @if(isLogin){
+            <h1>Login</h1>
+            <button (click)="switchIsLogin()">Não tenho uma conta</button>
+        } @else {
+            <h1>Register</h1>
+            <button (click)="switchIsLogin()">Já tenho uma conta</button>
+        }
+
+    </div>
+    
+</section>
