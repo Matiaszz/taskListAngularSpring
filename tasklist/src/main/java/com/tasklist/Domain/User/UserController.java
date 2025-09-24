@@ -2,13 +2,12 @@ package com.tasklist.Domain.User;
 
 import com.tasklist.Domain.User.DTOs.CompleteUserDTO;
 import com.tasklist.Domain.User.DTOs.UserRegisterDTO;
-import com.tasklist.Domain.User.services.CustomUserService;
 import com.tasklist.Domain.User.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -28,6 +27,24 @@ public class UserController {
         User user = userService.register(data);
         CompleteUserDTO dto = new CompleteUserDTO(user);
         return ResponseEntity.ok(dto);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Void> login(@RequestBody UserRegisterDTO data) {
+        if (data.username() == null || data.username().isEmpty() || data.password() == null || data.password().isEmpty()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Body must contain `username` and `password`");
+        }
+
+        String token = userService.login(data);
+
+        ResponseCookie cookie = ResponseCookie.from("token", token)
+                .httpOnly(true)
+                .path("/")
+                .sameSite("Lax")
+                .secure(true)
+                .build();
+
+        return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString()).build();
     }
 
 }

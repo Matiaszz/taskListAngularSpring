@@ -43,7 +43,10 @@ public class SecurityConfig {
                 .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers(HttpMethod.POST, "/api/user").permitAll()
+                        auth
+                                .requestMatchers(HttpMethod.POST, "/api/user").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/api/user/login").permitAll()
+
 
                 )
 
