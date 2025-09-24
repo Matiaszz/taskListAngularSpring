@@ -1,7 +1,14 @@
-<nav>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-    <li></li>
-</nav>
+<div class="navbar-container">
+    <nav>
+        <ul class="left">
+            <li><a href="/">Home</a></li>
+        </ul>
+        <ul class="right">
+            @if (isLogged){
+            <li>My Tasks</li>
+            <li>All tasks</li>
+            }
+            <li><a href="{{isLogged ? '/profile' : '/auth'}}">{{isLogged ? 'My Profile' : 'Login'}}</a></li>
+        </ul>
+    </nav>
+</div>

@@ -7,4 +7,5 @@ import { Component, Renderer2 } from '@angular/core';
   styleUrl: './navbar.scss'
 })
 export class Navbar {
+  isLogged = true;
 }

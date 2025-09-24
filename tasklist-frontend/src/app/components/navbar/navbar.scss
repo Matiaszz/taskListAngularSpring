@@ -1,0 +1,43 @@
+@use '../../../styles.scss' as *;
+
+.navbar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+}
+
+nav {
+    justify-content: space-around;
+    display: flex;
+    background-color: $primary-color;
+    width: 100dvw;
+    padding: 1.3rem;
+}
+
+
+ul {
+    list-style-type: none;
+    display: flex;
+    gap: 2rem;
+}
+
+li::after {
+    content: '';
+    background-color: currentColor;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 2px;
+    text-decoration: underline;
+    transition: width 0.3s ease-in-out;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+li:hover::after {
+    width: 100%;
+}
